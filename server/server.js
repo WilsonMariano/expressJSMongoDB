@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(require('./routes/usuario'));
 
-mongoose.connect('mongodb://cafe:espora953@ds141704.mlab.com:41704/cafe-udemy', {useNewUrlParser: true}, (err, res) =>{
+mongoose.connect(process.env.URLDB, {useNewUrlParser: true}, (err, res) =>{
 
     if(err) throw err;
     console.log("BBDD online");
