@@ -43,7 +43,7 @@ app.post('/usuario', function(req, res) {
     });
 
     usuario.save((err, usuarioDB) => {
-        handleError(err);
+        handleError(err, res);
 
         res.json({
             ok: true,
@@ -97,7 +97,7 @@ app.delete('/usuario/:id', function(req, res) {
     let id = req.params.id;
 
     Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
-        handleError(err);
+        handleError(err, res);
 
         if (!usuarioBorrado) {
             res.json({

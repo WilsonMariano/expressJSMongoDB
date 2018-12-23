@@ -1,0 +1,100 @@
+2018-12-22T05:25:16.405197+00:00 app[web.1]: at /app/node_modules/express/lib/router/index.js:284:7
+2018-12-22T05:25:16.405198+00:00 app[web.1]: at Function.process_params (/app/node_modules/express/lib/router/index.js:335:12)
+2018-12-22T05:25:16.405200+00:00 app[web.1]: at next (/app/node_modules/express/lib/router/index.js:275:10)
+2018-12-22T05:25:16.405201+00:00 app[web.1]: at query (/app/node_modules/express/lib/middleware/query.js:45:5)
+2018-12-22T05:25:39.577656+00:00 heroku[router]: at=info method=GET path="/" host=express-js-con-mongo-db.herokuapp.com request_id=384d1211-c8e6-4e21-b5bf-63c4b4607789 fwd="190.189.157.181" dyno=web.1 connect=0ms service=1ms status=404 bytes=383 protocol=https
+2018-12-22T05:25:43.838411+00:00 heroku[router]: at=info method=GET path="/usuario" host=express-js-con-mongo-db.herokuapp.com request_id=1ef29ddb-8624-40e6-a6d7-ffe1e079301d fwd="190.189.157.181" dyno=web.1 connect=0ms service=5ms status=304 bytes=150 protocol=https
+2018-12-22T05:30:11.000000+00:00 app[api]: Build started by user mgw009@gmail.com
+2018-12-22T05:30:23.166966+00:00 heroku[web.1]: Restarting
+2018-12-22T05:30:23.174240+00:00 heroku[web.1]: State changed from up to starting
+2018-12-22T05:30:22.693317+00:00 app[api]: Release v6 created by user mgw009@gmail.com
+2018-12-22T05:30:22.693317+00:00 app[api]: Deploy a708686e by user mgw009@gmail.com
+2018-12-22T05:30:24.035334+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2018-12-22T05:30:24.124747+00:00 heroku[web.1]: Process exited with status 143
+2018-12-22T05:30:23.000000+00:00 app[api]: Build succeeded
+2018-12-22T05:30:26.194606+00:00 heroku[web.1]: Starting process with command `npm start`
+2018-12-22T05:30:29.394063+00:00 app[web.1]: 
+2018-12-22T05:30:29.394079+00:00 app[web.1]: > expressjsmongodb@1.0.0 start /app
+2018-12-22T05:30:29.394081+00:00 app[web.1]: > node server/server.js
+2018-12-22T05:30:29.394083+00:00 app[web.1]: 
+2018-12-22T05:30:30.272654+00:00 app[web.1]: Servidor corriendo en puerto  9041
+2018-12-22T05:30:30.406753+00:00 app[web.1]: (node:22) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+2018-12-22T05:30:30.407733+00:00 app[web.1]: BBDD online
+2018-12-22T05:30:30.919043+00:00 heroku[web.1]: State changed from starting to up
+2018-12-22T05:30:51.645672+00:00 heroku[router]: at=info method=GET path="/usuario" host=express-js-con-mongo-db.herokuapp.com request_id=d8df52bb-5aa6-4e5a-859a-42e3033e62a2 fwd="190.189.157.181" dyno=web.1 connect=2ms service=59ms status=200 bytes=245 protocol=https
+2018-12-22T05:30:51.636588+00:00 app[web.1]: (node:22) DeprecationWarning: collection.count is deprecated, and will be removed in a future version. Use collection.countDocuments or collection.estimatedDocumentCount instead
+2018-12-22T05:30:56.766251+00:00 app[web.1]: events.js:183
+2018-12-22T05:30:56.766258+00:00 app[web.1]: throw er; // Unhandled 'error' event
+2018-12-22T05:30:56.766260+00:00 app[web.1]: ^
+2018-12-22T05:30:56.766261+00:00 app[web.1]: 
+2018-12-22T05:30:56.766263+00:00 app[web.1]: ReferenceError: res is not defined
+2018-12-22T05:30:56.766265+00:00 app[web.1]: at handleError (/app/server/routes/usuario.js:119:9)
+2018-12-22T05:30:56.766267+00:00 app[web.1]: at usuario.save (/app/server/routes/usuario.js:46:9)
+2018-12-22T05:30:56.766268+00:00 app[web.1]: at /app/node_modules/mongoose/lib/model.js:4528:16
+2018-12-22T05:30:56.766270+00:00 app[web.1]: at $__save.error (/app/node_modules/mongoose/lib/model.js:435:16)
+2018-12-22T05:30:56.766272+00:00 app[web.1]: at /app/node_modules/kareem/index.js:246:48
+2018-12-22T05:30:56.766273+00:00 app[web.1]: at next (/app/node_modules/kareem/index.js:167:27)
+2018-12-22T05:30:56.766275+00:00 app[web.1]: at next (/app/node_modules/kareem/index.js:169:9)
+2018-12-22T05:30:56.766277+00:00 app[web.1]: at Kareem.execPost (/app/node_modules/kareem/index.js:217:3)
+2018-12-22T05:30:56.766278+00:00 app[web.1]: at _handleWrapError (/app/node_modules/kareem/index.js:245:21)
+2018-12-22T05:30:56.766280+00:00 app[web.1]: at /app/node_modules/kareem/index.js:272:14
+2018-12-22T05:30:56.766281+00:00 app[web.1]: at _next (/app/node_modules/kareem/index.js:94:14)
+2018-12-22T05:30:56.766283+00:00 app[web.1]: at process.nextTick (/app/node_modules/kareem/index.js:499:38)
+2018-12-22T05:30:56.766285+00:00 app[web.1]: at _combinedTickCallback (internal/process/next_tick.js:131:7)
+2018-12-22T05:30:56.766287+00:00 app[web.1]: at process._tickCallback (internal/process/next_tick.js:180:9)
+2018-12-22T05:30:56.794552+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2018-12-22T05:30:56.795612+00:00 app[web.1]: npm ERR! errno 1
+2018-12-22T05:30:56.797285+00:00 app[web.1]: npm ERR! expressjsmongodb@1.0.0 start: `node server/server.js`
+2018-12-22T05:30:56.797467+00:00 app[web.1]: npm ERR! Exit status 1
+2018-12-22T05:30:56.797729+00:00 app[web.1]: npm ERR!
+2018-12-22T05:30:56.797971+00:00 app[web.1]: npm ERR! Failed at the expressjsmongodb@1.0.0 start script.
+2018-12-22T05:30:56.798151+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2018-12-22T05:30:56.817368+00:00 app[web.1]: 
+2018-12-22T05:30:56.819526+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2018-12-22T05:30:56.819752+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2018-12-22T05_30_56_799Z-debug.log
+2018-12-22T05:30:56.890566+00:00 heroku[web.1]: State changed from up to crashed
+2018-12-22T05:30:56.896195+00:00 heroku[web.1]: State changed from crashed to starting
+2018-12-22T05:30:56.869194+00:00 heroku[web.1]: Process exited with status 1
+2018-12-22T05:30:56.884486+00:00 heroku[router]: at=error code=H13 desc="Connection closed without response" method=POST path="/usuario" host=express-js-con-mongo-db.herokuapp.com request_id=859285b0-bdac-4f56-96f1-01e1d2dd026c fwd="190.189.157.181" dyno=web.1 connect=1ms service=161ms status=503 bytes=0 protocol=https
+2018-12-22T05:31:01.947629+00:00 heroku[web.1]: Starting process with command `npm start`
+2018-12-22T05:31:05.366623+00:00 app[web.1]: 
+2018-12-22T05:31:05.366640+00:00 app[web.1]: > expressjsmongodb@1.0.0 start /app
+2018-12-22T05:31:05.366642+00:00 app[web.1]: > node server/server.js
+2018-12-22T05:31:05.366644+00:00 app[web.1]: 
+2018-12-22T05:31:07.504166+00:00 heroku[web.1]: State changed from starting to up
+2018-12-22T05:31:07.288510+00:00 app[web.1]: Servidor corriendo en puerto  32078
+2018-12-22T05:31:07.516703+00:00 app[web.1]: (node:22) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+2018-12-22T05:31:07.517428+00:00 app[web.1]: BBDD online
+2018-12-22T05:39:03.041149+00:00 app[web.1]: (node:22) DeprecationWarning: collection.count is deprecated, and will be removed in a future version. Use collection.countDocuments or collection.estimatedDocumentCount instead
+2018-12-22T05:39:03.056472+00:00 heroku[router]: at=info method=GET path="/usuario" host=express-js-con-mongo-db.herokuapp.com request_id=4d57d24c-e1e5-4cef-b295-fbf1a40a7cf2 fwd="190.189.157.181" dyno=web.1 connect=0ms service=56ms status=200 bytes=245 protocol=https
+2018-12-22T05:39:57.336023+00:00 app[web.1]: events.js:183
+2018-12-22T05:39:57.336037+00:00 app[web.1]: throw er; // Unhandled 'error' event
+2018-12-22T05:39:57.336039+00:00 app[web.1]: ^
+2018-12-22T05:39:57.336040+00:00 app[web.1]: 
+2018-12-22T05:39:57.336042+00:00 app[web.1]: ReferenceError: res is not defined
+2018-12-22T05:39:57.336044+00:00 app[web.1]: at handleError (/app/server/routes/usuario.js:119:9)
+2018-12-22T05:39:57.336046+00:00 app[web.1]: at usuario.save (/app/server/routes/usuario.js:46:9)
+2018-12-22T05:39:57.336048+00:00 app[web.1]: at /app/node_modules/mongoose/lib/model.js:4528:16
+2018-12-22T05:39:57.336050+00:00 app[web.1]: at $__save.error (/app/node_modules/mongoose/lib/model.js:435:16)
+2018-12-22T05:39:57.336052+00:00 app[web.1]: at /app/node_modules/kareem/index.js:246:48
+2018-12-22T05:39:57.336054+00:00 app[web.1]: at next (/app/node_modules/kareem/index.js:167:27)
+2018-12-22T05:39:57.336056+00:00 app[web.1]: at next (/app/node_modules/kareem/index.js:169:9)
+2018-12-22T05:39:57.336057+00:00 app[web.1]: at Kareem.execPost (/app/node_modules/kareem/index.js:217:3)
+2018-12-22T05:39:57.336059+00:00 app[web.1]: at _handleWrapError (/app/node_modules/kareem/index.js:245:21)
+2018-12-22T05:39:57.336061+00:00 app[web.1]: at /app/node_modules/kareem/index.js:272:14
+2018-12-22T05:39:57.336063+00:00 app[web.1]: at _next (/app/node_modules/kareem/index.js:94:14)
+2018-12-22T05:39:57.336064+00:00 app[web.1]: at process.nextTick (/app/node_modules/kareem/index.js:499:38)
+2018-12-22T05:39:57.336066+00:00 app[web.1]: at _combinedTickCallback (internal/process/next_tick.js:131:7)
+2018-12-22T05:39:57.336068+00:00 app[web.1]: at process._tickCallback (internal/process/next_tick.js:180:9)
+2018-12-22T05:39:57.349174+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2018-12-22T05:39:57.349629+00:00 app[web.1]: npm ERR! errno 1
+2018-12-22T05:39:57.351669+00:00 app[web.1]: npm ERR! expressjsmongodb@1.0.0 start: `node server/server.js`
+2018-12-22T05:39:57.351874+00:00 app[web.1]: npm ERR! Exit status 1
+2018-12-22T05:39:57.352210+00:00 app[web.1]: npm ERR!
+2018-12-22T05:39:57.352511+00:00 app[web.1]: npm ERR! Failed at the expressjsmongodb@1.0.0 start script.
+2018-12-22T05:39:57.352754+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2018-12-22T05:39:57.358105+00:00 app[web.1]: 
+2018-12-22T05:39:57.358402+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2018-12-22T05:39:57.358618+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2018-12-22T05_39_57_354Z-debug.log
+2018-12-22T05:39:57.432170+00:00 heroku[web.1]: Process exited with status 1
+2018-12-22T05:39:57.485065+00:00 heroku[router]: at=error code=H13 desc="Connection closed without response" method=POST path="/usuario" host=express-js-con-mongo-db.herokuapp.com request_id=aa400374-624a-4e37-8f9b-959e1b59b59d fwd="190.189.157.181" dyno=web.1 connect=0ms service=197ms status=503 bytes=0 protocol=https
