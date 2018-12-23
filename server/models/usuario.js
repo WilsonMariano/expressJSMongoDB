@@ -39,13 +39,21 @@ let usuarioSchema = new mongoose.Schema({
     },
 });
 
-usuarioSchema.methods.toJSON = function(){
+//=========================================
+//                METODOS
+//=========================================
+
+usuarioSchema.methods.toJSON = function() {
     let userObject = this.toObject();
     delete userObject.password;
-    
+
     return userObject;
 }
 
-usuarioSchema.plugin( uniqueValidator, {message: '{PATH} debe ser único'} );
+usuarioSchema.statics.searchRole = function(callback) {
+    return this.model('Usuario').find({ 'role': 'USER_ROLE' }, callback);
+}
+
+usuarioSchema.plugin(uniqueValidator, { message: '{PATH} debe ser único' });
 
 module.exports = mongoose.model('Usuario', usuarioSchema);

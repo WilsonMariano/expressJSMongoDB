@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const app = express();
 
 
-app.get('/usuario', function (req, res) {
+app.get('/usuario', function(req, res) {
 
     let desde = Number(req.query.desde) || 0;
     let hasta = Number(req.query.hasta) || 999;
@@ -15,10 +15,10 @@ app.get('/usuario', function (req, res) {
     Usuario.find(condicion, 'nombre email role estado google img')
         .skip(desde)
         .limit(hasta)
-        .exec((err, usuarios)=>{
+        .exec((err, usuarios) => {
             handleError(err);
 
-            Usuario.count(condicion, (err, cantidad)=>{
+            Usuario.count(condicion, (err, cantidad) => {
                 handleError(err);
 
                 res.json({
@@ -30,16 +30,16 @@ app.get('/usuario', function (req, res) {
         });
 });
 
-app.post('/usuario', function (req, res) {
+app.post('/usuario', function(req, res) {
 
     let body = req.body;
     let usuario = new Usuario({
-        nombre : body.nombre,
-        email : body.email,
+        nombre: body.nombre,
+        email: body.email,
         // password :  bcrypt.hashSync(body.password, 10),
-        password : body.password,
-        img : body.img,
-        role : body.role
+        password: body.password,
+        img: body.img,
+        role: body.role
     });
 
     usuario.save((err, usuarioDB) => {
@@ -53,32 +53,32 @@ app.post('/usuario', function (req, res) {
 
 })
 
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id', function(req, res) {
 
     let id = req.params.id;
     let body = req.body;
- 
-    Usuario.findByIdAndUpdate(id, body, {new: true, runValidators: true}, (err, usuarioDB) => {
+
+    Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
         handleError(err);
 
         res.json({
             ok: true,
-            usuario: usuarioDB 
+            usuario: usuarioDB
         });
     });
 });
 
-app.put('/usuario/cambiarEstado/:id', function (req, res) {
+app.put('/usuario/cambiarEstado/:id', function(req, res) {
 
     let id = req.params.id;
     let nuevoEstado = {
         estado: false
     }
- 
-    Usuario.findByIdAndUpdate(id, nuevoEstado, {new: true}, (err, usuarioDB) => {
+
+    Usuario.findByIdAndUpdate(id, nuevoEstado, { new: true }, (err, usuarioDB) => {
         handleError(err);
 
-        if(!usuarioDB){
+        if (!usuarioDB) {
             res.json({
                 ok: false,
                 err: "Usuario no encontrado"
@@ -87,19 +87,19 @@ app.put('/usuario/cambiarEstado/:id', function (req, res) {
 
         res.json({
             ok: true,
-            usuario: usuarioDB 
+            usuario: usuarioDB
         });
     });
 });
 
-app.delete('/usuario/:id', function (req, res) {
-    
+app.delete('/usuario/:id', function(req, res) {
+
     let id = req.params.id;
 
     Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
         handleError(err);
 
-        if(!usuarioBorrado){
+        if (!usuarioBorrado) {
             res.json({
                 ok: false,
                 err: "Usuario no encontrado"
@@ -114,7 +114,7 @@ app.delete('/usuario/:id', function (req, res) {
 });
 
 
-let handleError = function(err){
+let handleError = function(err) {
     if (err) {
         res.status(400).json({
             ok: false,
