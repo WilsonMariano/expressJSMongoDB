@@ -16,10 +16,22 @@ app.get('/usuario', function(req, res) {
         .skip(desde)
         .limit(hasta)
         .exec((err, usuarios) => {
-            handleError(err);
+
+            if (err) {
+                res.status(400).json({
+                    ok: false,
+                    err
+                });
+            }
 
             Usuario.count(condicion, (err, cantidad) => {
-                handleError(err);
+
+                if (err) {
+                    res.status(400).json({
+                        ok: false,
+                        err
+                    });
+                }
 
                 res.json({
                     ok: true,
@@ -43,7 +55,13 @@ app.post('/usuario', function(req, res) {
     });
 
     usuario.save((err, usuarioDB) => {
-        handleError(err, res);
+
+        if (err) {
+            res.status(400).json({
+                ok: false,
+                err
+            });
+        }
 
         res.json({
             ok: true,
@@ -59,7 +77,13 @@ app.put('/usuario/:id', function(req, res) {
     let body = req.body;
 
     Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
-        handleError(err);
+
+        if (err) {
+            res.status(400).json({
+                ok: false,
+                err
+            });
+        }
 
         res.json({
             ok: true,
@@ -76,7 +100,13 @@ app.put('/usuario/cambiarEstado/:id', function(req, res) {
     }
 
     Usuario.findByIdAndUpdate(id, nuevoEstado, { new: true }, (err, usuarioDB) => {
-        handleError(err);
+
+        if (err) {
+            res.status(400).json({
+                ok: false,
+                err
+            });
+        }
 
         if (!usuarioDB) {
             res.json({
@@ -97,7 +127,13 @@ app.delete('/usuario/:id', function(req, res) {
     let id = req.params.id;
 
     Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
-        handleError(err, res);
+
+        if (err) {
+            res.status(400).json({
+                ok: false,
+                err
+            });
+        }
 
         if (!usuarioBorrado) {
             res.json({
@@ -113,13 +149,4 @@ app.delete('/usuario/:id', function(req, res) {
     });
 });
 
-
-let handleError = function(err) {
-    if (err) {
-        res.status(400).json({
-            ok: false,
-            err
-        });
-    }
-}
 module.exports = app;
