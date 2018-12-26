@@ -2,7 +2,7 @@ const express = require('express')
 const Usuario = require('../models/usuario');
 const bcrypt = require('bcrypt');
 const app = express();
-const { verificaToken } = require('../middlewares/autenticacion');
+const { verificaToken, verificaAdminRole } = require('../middlewares/autenticacion');
 
 
 app.get('/usuario', verificaToken, (req, res) => {
@@ -43,7 +43,7 @@ app.get('/usuario', verificaToken, (req, res) => {
         });
 });
 
-app.post('/usuario', function(req, res) {
+app.post('/usuario', verificaToken, function(req, res) {
 
     let body = req.body;
     let usuario = new Usuario({
@@ -58,7 +58,7 @@ app.post('/usuario', function(req, res) {
     usuario.save((err, usuarioDB) => {
 
         if (err) {
-            res.status(400).json({
+            return res.status(400).json({
                 ok: false,
                 err
             });
@@ -72,7 +72,7 @@ app.post('/usuario', function(req, res) {
 
 })
 
-app.put('/usuario/:id', function(req, res) {
+app.put('/usuario/:id', verificaToken, function(req, res) {
 
     let id = req.params.id;
     let body = req.body;
@@ -93,7 +93,7 @@ app.put('/usuario/:id', function(req, res) {
     });
 });
 
-app.put('/usuario/cambiarEstado/:id', function(req, res) {
+app.put('/usuario/cambiarEstado/:id', verificaToken, function(req, res) {
 
     let id = req.params.id;
     let nuevoEstado = {
@@ -123,21 +123,21 @@ app.put('/usuario/cambiarEstado/:id', function(req, res) {
     });
 });
 
-app.delete('/usuario/:id', function(req, res) {
+app.delete('/usuario/:id', verificaToken, function(req, res) {
 
     let id = req.params.id;
 
     Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
 
         if (err) {
-            res.status(400).json({
+            return res.status(400).json({
                 ok: false,
                 err
             });
         }
 
         if (!usuarioBorrado) {
-            res.json({
+            return res.json({
                 ok: false,
                 err: "Usuario no encontrado"
             });
