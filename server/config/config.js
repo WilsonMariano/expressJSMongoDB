@@ -28,10 +28,10 @@ process.env.URLDB = urlDB;
 //         Expiración del token
 //=========================================
 
-process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
+process.env.CADUCIDAD_TOKEN = 1000 * 60 * 60 * 24 * 30;
 
 //=========================================
-//         SEDD del token
+//         SEED del token
 //=========================================
 
 process.env.SEED_TOKEN = process.env.SEED_TOKEN || 'este-es-el-seed-desarrollo';

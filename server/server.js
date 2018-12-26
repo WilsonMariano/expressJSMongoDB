@@ -11,7 +11,10 @@ app.use(require('./routes/index'));
 
 mongoose.connect(process.env.URLDB, { useNewUrlParser: true }, (err, res) => {
 
-    if (err) throw err;
+    if (err) {
+        console.log("BBDD offline");
+        throw err;
+    }
     console.log("BBDD online");
 });
 
