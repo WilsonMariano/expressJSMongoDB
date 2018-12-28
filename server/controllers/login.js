@@ -1,6 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { OAuth2Client } = require('google-auth-library');
 const Usuario = require('../models/usuario');
+
+const client = new OAuth2Client(process.env.CLIENT_ID);
 
 const postLogin = (req, res) => {
 
@@ -41,8 +44,45 @@ const postLogin = (req, res) => {
             ok: true,
             usuario,
             token
-        })
-    })
+        });
+    });
 }
 
-module.exports = { postLogin }
+const google = async (req, res) => {
+
+    let token = req.body.idtoken;
+
+    let googleUser = await verify(token)
+        .catch(err => {
+
+            return res.status(403).json({
+                ok: false,
+                err: 'Token inválido'
+            });
+        });
+    
+    return res.json({
+        ok: true,
+        data: googleUser
+    });
+}
+
+async function verify( token ) {
+
+    const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: process.env.CLIENT_ID,  
+    });
+    const payload = ticket.getPayload();
+   
+    return {
+        nombre: payload.name,
+        email: payload.email,
+        img: payload.picture,
+        google: true
+    }
+}
+
+module.exports = { 
+    postLogin,
+    google }
