@@ -60,11 +60,67 @@ const google = async (req, res) => {
                 err: 'Token inválido'
             });
         });
+
+        Usuario.findOne({email: googleUser.email}, (err, usuarioDB) => {
+
+            if(err){
+                return res.status(500).json({
+                    ok: false,
+                    err
+                });
+            };
+
+            //Si el usuario ya cuenta con cuenta de correo y contraseña
+            if(usuarioDB){
+                if(!usuarioDB.google){
+
+                    return res.status(400).json({
+                        ok: false,
+                        err: {
+                            msg: "Debe usar su autenticacion normal"
+                        }
+                    });
+                } else {
+                    let token = jwt.sign({
+                        usuario: usuarioDB,
+                    }, process.env.SEED_TOKEN, { expiresIn: process.env.CADUCIDAD_TOKEN });
+
+                    return res.json({
+                        ok: true,
+                        usuario: usuarioDB,
+                        token
+                    });
+                }
+            } else {
+                //Si el usuario no existe en la BD se guarda
+                let usuario = new Usuario();
+                usuario.nombre = googleUser.nombre;
+                usuario.email = googleUser.email;
+                usuario.img = googleUser.img;
+                usuario.google = true;
+                usuario.password = ':)';
+
+                usuario.save((err, usuarioDB) => {
+                    if(err){
+                        return res.status(500).json({
+                            ok: false,
+                            err
+                        });
+                    }
+
+                    let token = jwt.sign({
+                        usuario: usuarioDB,
+                    }, process.env.SEED_TOKEN, { expiresIn: process.env.CADUCIDAD_TOKEN });
+
+                    return res.json({
+                        ok: true,
+                        usuario: usuarioDB,
+                        token
+                    });
+                })
+            }
+        });
     
-    return res.json({
-        ok: true,
-        data: googleUser
-    });
 }
 
 async function verify( token ) {
