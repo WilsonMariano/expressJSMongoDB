@@ -21,6 +21,8 @@
     "google-auth-library": "^2.0.2",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.3.16",
-    "mongoose-unique-validator": "^2.0.2"
+    "mongoose-unique-validator": "^2.0.2",
+    "nodemailer": "^5.1.1",
+    "nodemailer-smtp-transport": "^2.7.4"
   }
 }
